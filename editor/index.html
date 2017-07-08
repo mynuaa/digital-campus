@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Editor</title>
+    <style>
+        body {
+            margin: 50px;
+            cursor: default;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        text, button {
+            font-family: "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei UI", "微软雅黑", sans-serif;
+        }
+        text {
+            font-size: 3px;
+            text-anchor: middle;
+            fill: #000;
+        }
+        svg > g > text {
+            fill: #fff;
+        }
+        circle {
+            fill: #4caf50;
+            stroke: #1b5e20;
+            stroke-width: 0.5px;
+        }
+        line {
+            stroke: #1b5e20;
+            stroke-width: 2.5px;
+        }
+        svg {
+            overflow: visible;
+        }
+        #controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+        button {
+            border: none;
+            background: #2196f3;
+            color: #fff;
+            padding: 8px 15px;
+            outline: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="stage"></div>
+    <div id="controls">
+        <button id="add-vertex">加点</button>
+        <button id="del-vertex">删点</button>
+        <button>连边</button>
+        <button id="save">保存</button>
+    </div>
+    <script src="d3.min.js"></script>
+    <script src="../data.js"></script>
+    <script src="../vertexs.js"></script>
+    <script src="editor.js"></script>
+</body>
+</html>

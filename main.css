@@ -1,0 +1,256 @@
+body {
+    font-family: "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei UI", 微软雅黑, sans-serif;
+    background: #f2f4f6;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+div, ul, li, img {
+    box-sizing: border-box;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #333;
+    color: #fff;
+    padding: 0 20px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 4;
+}
+header img {
+    height: 20px;
+    margin: 10px 10px 0 0;
+}
+header > * {
+    float: left;
+}
+header ul {
+    list-style: none;
+    margin: 0 0 0 12px;
+    padding: 0;
+    font-size: 12px;
+}
+header li {
+    display: inline-block;
+    padding: 0 8px;
+    box-sizing: border-box;
+    height: 40px;
+    line-height: 40px;
+}
+header li:hover {
+    background: #444;
+}
+header a {
+    text-decoration: none;
+    color: #fff;
+}
+.labels {
+    position: fixed;
+    top: 40px;;
+    left: -210px;
+    width: 200px;
+    bottom: 0;
+    background: #333;
+    color: #fff;
+    z-index: 3;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    -webkit-transition: transform .5s;
+    -moz-transition: transform .5s;
+    -ms-transition: transform .5s;
+    -o-transition: transform .5s;
+    transition: transform .5s;
+}
+.labels:hover {
+    -webkit-transform: translateX(210px);
+    -moz-transform: translateX(210px);
+    -ms-transform: translateX(210px);
+    -o-transform: translateX(210px);
+    transform: translateX(210px);
+}
+.labels-content {
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 5px 0 10px;
+}
+.labels h1 {
+    text-align: center;
+    font-size: 16px;
+    height: 24px;
+    line-height: 24px;
+    margin: 5px;
+}
+.labels .btn-hidden {
+    position: absolute;
+    top: 50%;
+    right: -41px;
+    width: 40px;
+    height: 60px;
+    line-height: 60px;
+    text-align: right;
+    margin-top: -30px;
+    padding-right: 10px;
+    background: #333;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 0 10px 10px 0;
+    font-size: 20px;
+    box-sizing: border-box;
+    -webkit-transition: width .5s, right .5s;
+    -moz-transition: width .5s, right .5s;
+    -ms-transition: width .5s, right .5s;
+    -o-transition: width .5s, right .5s;
+    transition: width .5s, right .5s;
+}
+.labels:hover .btn-hidden {
+    width: 30px;
+    right: -30px;
+}
+.picture {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    -webkit-transition: transform 0.3s, filter 0.3s;
+    -moz-transition: transform 0.3s, filter 0.3s;
+    -ms-transition: transform 0.3s, filter 0.3s;
+    -o-transition: transform 0.3s, filter 0.3s;
+    transition: transform 0.3s, filter 0.3s;
+}
+#stage ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 32px;
+    overflow: hidden;
+}
+#stage ul:target {
+    height: auto;
+}
+#stage li {
+    padding: 0 20px 0 40px;
+    height: 32px;
+    line-height: 32px;
+    cursor: pointer;
+}
+#stage ul:target li:first-child,
+#stage li:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+#stage .click {
+    font-weight: bold;
+    padding-left: 20px;
+}
+.display-name {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    padding: 5px 8px;
+    background: #333;
+    color: #fff;
+    border-radius: 4px;
+    opacity: 1;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
+    z-index: 2;
+}
+.orientation-hint {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -125px;
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    opacity: 0;
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
+    z-index: 4;
+}
+.controls {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 4;
+}
+.controls button {
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin: 3px;
+    padding: 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+.controls button:active {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+.control-go {
+    position: absolute;
+    top: -42px;
+    left: 42px;
+}
+@media screen and (orientation: portrait) {
+    .orientation-hint {
+        opacity: 1;
+    }
+}
+@media screen and (max-width: 350px) {
+    header ul {
+        position: fixed;
+        width: 100px;
+        height: 40px;
+        top: 0;
+        right: 0;
+        overflow: hidden;
+        background: #333;
+        z-index: 3;
+    }
+    header ul:before {
+        content: '菜单';
+        display: block;
+        float: none;
+        text-align: center;
+    }
+    header ul:hover {
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+        height: auto;
+    }
+    header li {
+        display: block;
+        text-align: center;
+    }
+}
