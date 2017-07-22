@@ -3,12 +3,7 @@ for (var i = 0; i < vertexs.length; i++) {
     vertexHash[vertexs[i].name] = vertexs[i];
 }
 
-var directionText = {
-    'n': '北',
-    'e': '东',
-    's': '南',
-    'w': '西'
-};
+
 function updateEdges(data, status) {
     var edges = map.selectAll('line').data(data, function (d) { return d.hash; });
     if (status == 'enter') {
@@ -21,10 +16,21 @@ function updateEdges(data, status) {
         .attr('y1', function (d) { return d.origin.cy; })
         .attr('x2', function (d) { return d.next.cx; })
         .attr('y2', function (d) { return d.next.cy; })
+        .attr('style', function (d) {
+            switch (d.degree) {
+                case 1: return 'stroke:#4caf50';
+                case 2: return 'stroke:#1b5e20';
+                default: return 'stroke:red';
+            }
+        })
         .on('mousemove', function (d) {
-            var m = d.hash.match(/^(.+?)\[([nesw])\]\|(.+?)\[([nesw])\]$/);
-            var desc = m[1] + '(' + directionText[m[2]] + ') <=> ' + m[3] + '(' + directionText[m[4]] + ')';
-            descText.text(desc);
+            var degreeText = '';
+            switch (d.degree) {
+                case 1: degreeText = '单向连通'; break;
+                case 2: degreeText = '双向连通'; break;
+                default: degreeText = '有重边'; break;
+            }
+            descText.text(d.desc + '，' + degreeText);
             var mousePos = d3.mouse(this);
             descDom.attr('style', 'transform: translate(' + (mousePos[0] - 1) + 'px, ' + (mousePos[1] - 3) + 'px)');
         })
@@ -91,13 +97,19 @@ descDom.append('rect')
     .attr('fill', 'rgba(0, 0, 0, 0.8)')
     .attr('x', -2)
     .attr('y', -3.5)
-    .attr('width', 45)
+    .attr('width', 60)
     .attr('height', 5);
 var descText = descDom.append('text')
-    .attr('x', 20.45)
+    .attr('x', 0)
     .attr('y', 0.1);
 
 var directions = ['n', 'e', 's', 'w'];
+var directionText = {
+    'n': '北',
+    'e': '东',
+    's': '南',
+    'w': '西'
+};
 var edgeHash = {};
 var lineData = [];
 for (var i = 0; i < vertexs.length; i++) {
@@ -106,19 +118,28 @@ for (var i = 0; i < vertexs.length; i++) {
     for (var d = 0; d < directions.length; d++) {
         var dir = directions[d];
         if (near[dir]) {
-            var thisName = vertex.name + '[' + dir + ']';
-            var thatName = vertexHash[near[dir]].name + '[' + directions[(d + 2) % 4] + ']';
+            var thisName = vertex.name + '(' + directionText[dir] + ')';
+            var thatName = vertexHash[near[dir]].name + '(' + directionText[directions[(d + 2) % 4]] + ')';
             var min = d3.min([thisName, thatName]);
             var max = d3.max([thisName, thatName]);
-            var hash = min + '|' + max;
+            var minName = d3.min([vertex.name, vertexHash[near[dir]].name]);
+            var maxName = d3.max([vertex.name, vertexHash[near[dir]].name]);
+            var hash = minName + '|' + maxName;
             if (!edgeHash[hash]) {
                 var edge = {
                     origin: vertex,
                     next: vertexHash[near[dir]],
-                    hash: hash
+                    hash: hash,
+                    desc: min + '-' + max,
+                    degree: 1
                 };
                 lineData.push(edge);
                 edgeHash[hash] = edge;
+                console.log(hash);
+            } else {
+                console.log(hash, edgeHash[hash].degree);
+                edgeHash[hash].degree++;
+                console.log(hash, edgeHash[hash].degree);
             }
         }
     }
