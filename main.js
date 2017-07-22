@@ -39,8 +39,9 @@ var tmpImg = new Image;
 var showOnScreen = function (id, dirIndex) {
     currentVertexId = id;
     currentDirectionIndex = dirIndex;
-    displayName.innerText = labelDict[data.vertexs[id].label] ? labelDict[data.vertexs[id].label].name : '校园';
-    var src = 'places/' + id + '-' + directions[dirIndex] + '.jpg';
+    var vertex = vertexs.find(function (item) { return item.name == id; });
+    displayName.innerText = labelDict[vertex.label] ? labelDict[vertex.label].name : '校园';
+    var src = 'places/' + vertex.name + '-' + directions[dirIndex] + '.jpg';
     tmpImg.src = src;
     picture.style.webkitFilter = picture.style.MozFilter = picture.style.filter = 'blur(10px)';
     picture.style.webkitTransform = picture.style.MozTransform = picture.style.transform = 'scale(1.1)';
@@ -53,7 +54,7 @@ var showOnScreen = function (id, dirIndex) {
                 picture.style.webkitFilter = picture.style.MozFilter = picture.style.filter = 'blur(0)';
                 picture.style.webkitTransform = picture.style.MozTransform = picture.style.transform = 'scale(1)';
             }
-        }, 300);
+        }, 100);
     };
 };
 
@@ -94,7 +95,7 @@ Object.keys(data.labels).forEach(function (key) {
 goForward(data.initVertexId, data.initDirectionIndex);
 
 var calcPosition = function (position) {
-    var currentVertex = data.vertexs[currentVertexId];
+    var currentVertex = vertexs.find(function (item) { return item.name == currentVertexId; });
     var near = currentVertex.near || {};
     var nextVertexId;
     switch (position) {

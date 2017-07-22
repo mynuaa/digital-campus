@@ -1,5 +1,5 @@
 var data = {
-    label: {
+    labels: {
         "宿舍区": {
             "1": { name: "怡园宿舍", vid: "1", dir: 0 },
             "2": { name: "博园宿舍", vid: "1", dir: 0 },
@@ -24,6 +24,6 @@ var data = {
             "35": { name: "东门", vid: "169", dir: 2 }
         }
     },
-    initVertexId: "1",
+    initVertexId: "北门",
     initDirectionIndex: 1
 };

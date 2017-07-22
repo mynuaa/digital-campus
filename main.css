@@ -128,11 +128,11 @@ header a {
     background-position: center;
     background-repeat: no-repeat;
     z-index: 1;
-    -webkit-transition: transform 0.3s, filter 0.3s;
-    -moz-transition: transform 0.3s, filter 0.3s;
-    -ms-transition: transform 0.3s, filter 0.3s;
-    -o-transition: transform 0.3s, filter 0.3s;
-    transition: transform 0.3s, filter 0.3s;
+    -webkit-transition: transform 0.4s, filter 0.4s;
+    -moz-transition: transform 0.4s, filter 0.4s;
+    -ms-transition: transform 0.4s, filter 0.4s;
+    -o-transition: transform 0.4s, filter 0.4s;
+    transition: transform 0.4s, filter 0.4s;
 }
 #stage ul {
     margin: 0;
