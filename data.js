@@ -1,29 +1,29 @@
 var data = {
     labels: {
         "宿舍区": {
-            "1": { name: "怡园宿舍", vid: "1", dir: 0 },
-            "2": { name: "博园宿舍", vid: "1", dir: 0 },
-            "3": { name: "慧园宿舍", vid: "1", dir: 0 },
-            "4": { name: "东区宿舍", vid: "1", dir: 0 },
-            "5": { name: "和园宿舍", vid: "1", dir: 0 }
+            "1": { name: "怡园宿舍", vid: "怡园1", dir: 2 },
+            "2": { name: "博园宿舍", vid: "博园1", dir: 2 },
+            "3": { name: "慧园宿舍", vid: "慧园3", dir: 2 },
+            "4": { name: "东区宿舍", vid: "东区1", dir: 2 },
+            "5": { name: "和园宿舍", vid: "和园1", dir: 8 }
         },
         "教学楼": {
-            "11": { name: "西区教学楼", vid: "1", dir: 0 },
-            "12": { name: "东区教学楼", vid: "1", dir: 0 }
+            "11": { name: "西区教学楼", vid: "1", dir: 2 },
+            "12": { name: "东区教学楼", vid: "1", dir: 2 }
         },
         "广场": {
-            "21": { name: "樱花广场", vid: "1", dir: 0 },
-            "22": { name: "艺体广场", vid: "1", dir: 0 },
-            "23": { name: "国旗广场", vid: "1", dir: 0 }
+            "21": { name: "樱花广场", vid: "1", dir: 2 },
+            "22": { name: "艺体广场", vid: "1", dir: 2 },
+            "23": { name: "国旗广场", vid: "1", dir: 2 }
         },
         "校园大门": {
-            "31": { name: "北门", vid: "1", dir: 1 },
-            "32": { name: "小北门", vid: "1", dir: 0 },
-            "33": { name: "大西门", vid: "1", dir: 0 },
-            "34": { name: "小西门", vid: "1", dir: 0 },
-            "35": { name: "东门", vid: "169", dir: 2 }
+            "31": { name: "北门", vid: "北门", dir: 2 },
+            "32": { name: "小北门", vid: "小北门", dir: 2 },
+            "33": { name: "大西门", vid: "大西门", dir: 6 },
+            "34": { name: "小西门", vid: "小西门", dir: 6 },
+            "35": { name: "东门", vid: "东门", dir: 4 }
         }
     },
     initVertexId: "北门",
-    initDirectionIndex: 1
+    initDirectionIndex: 2
 };

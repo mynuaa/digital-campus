@@ -30,7 +30,7 @@ var picture = createElement('div', stage).setClass('picture');
 var displayName = createElement('div', stage).setClass('display-name');
 
 var labelDict = {};
-var directions = ['e', 's', 'w', 'n'];
+var directions = '__s_w_e_n';
 var currentVertexId;
 var currentDirectionIndex;
 var stack = [];
@@ -100,7 +100,7 @@ var calcPosition = function (position) {
     var nextVertexId;
     switch (position) {
         case 'w': // w or arrow up, go straight
-            nextVertexId = near[directions[currentDirectionIndex]] || null;
+            nextVertexId = near[currentDirectionIndex] || null;
             if (nextVertexId !== null) {
                 goForward(nextVertexId, currentDirectionIndex);
             }
@@ -110,11 +110,11 @@ var calcPosition = function (position) {
             break;
         case 'a': // a or arrow left, turn left
             stack.pop();
-            goForward(currentVertexId, (currentDirectionIndex + 3) % 4);
+            goForward(currentVertexId, currentDirectionIndex * 8 % 10);
             break;
         case 'd': // d or arrow right, turn right
             stack.pop();
-            goForward(currentVertexId, (currentDirectionIndex + 1) % 4);
+            goForward(currentVertexId, currentDirectionIndex * 2 % 10);
             break;
     }
 }

@@ -21,6 +21,7 @@
             font-size: 3px;
             text-anchor: middle;
             fill: #000;
+            cursor: pointer;
         }
         svg > g > text {
             fill: #fff;
@@ -28,7 +29,8 @@
         circle {
             fill: #4caf50;
             stroke: #1b5e20;
-            stroke-width: 0.5px;
+            stroke-width: 0.2px;
+            cursor: pointer;
         }
         line {
             stroke: #1b5e20;
@@ -60,7 +62,8 @@
     <div id="controls">
         <button id="add-vertex">加点</button>
         <button id="del-vertex">删点</button>
-        <button>连边</button>
+        <button id="add-edge">连边</button>
+        <button id="add-label">标签</button>
         <button id="save">保存</button>
     </div>
     <script src="d3.min.js"></script>
