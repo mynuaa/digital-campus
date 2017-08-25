@@ -26,9 +26,17 @@ function updateEdges(data, status) {
         .append('title').text(function (d) {
             var degreeText = '';
             switch (d.degree) {
-                case 1: degreeText = '单向连通'; break;
-                case 2: degreeText = '双向连通'; break;
-                default: degreeText = '有重边'; break;
+                case 1:
+                    degreeText = '单向连通';
+                    console.log('[' + d.desc + '] 是单向连通');
+                    break;
+                case 2:
+                    degreeText = '双向连通';
+                    break;
+                default:
+                    degreeText = '有重边';
+                    console.log('[' + d.desc + '] 有重边');
+                    break;
             }
             return d.desc + ', ' + degreeText;
         });
@@ -154,6 +162,40 @@ updateEdges(lineData, 'enter');
 updateVertexs(vertexs, 'enter');
 
 var clickStatus = 'normal';
+
+var btnScanImg = document.getElementById('scan-img');
+btnScanImg.onclick = function () {
+    this.style.background = '#999';
+    this.innerHTML = '检测中...';
+    var missing = [];
+    var directions = 'nesw';
+    var processed = 0;
+    for (var i in vertexs) {
+        for (var k in directions) {
+            (function (i, k) {
+                var name = vertexs[i].name;
+                var direction = directions[k];
+                var key = '../places/' + name + '-' + direction + '.jpg';
+                processed++;
+                fetch(key, { method: 'HEAD' }).then(function (res) {
+                    if (!res.ok) {
+                        missing.push({
+                            name: name,
+                            direction: direction
+                        });
+                    }
+                    processed--;
+                    if (processed == 0) {
+                        console.table(missing);
+                        btnScanImg.style.background = '#2196f3';
+                        btnScanImg.innerHTML = '检测缺失的图片';
+                        alert('检测完毕，结果已输出至 console。');
+                    }
+                }).catch(function (e) { });
+            })(i, k);
+        }
+    }
+};
 
 var btnAddVertex = document.getElementById('add-vertex');
 btnAddVertex.onclick = function () {
