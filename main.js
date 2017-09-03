@@ -40,7 +40,7 @@ var showOnScreen = function (id, dirIndex) {
     currentVertexId = id;
     currentDirectionIndex = dirIndex;
     var vertex = vertexs.find(function (item) { return item.name == id; });
-    displayName.innerText = labelDict[vertex.label] ? labelDict[vertex.label].name : '校园';
+    displayName.innerText = vertex.label || '校园';
     var src = 'places/' + vertex.name + '-' + directions[dirIndex] + '.jpg';
     tmpImg.src = src;
     picture.style.webkitFilter = picture.style.MozFilter = picture.style.filter = 'blur(10px)';
